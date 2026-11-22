@@ -4,8 +4,12 @@ const getCharacters = async (category) =>{
 
     const characterList = document.getElementById("character-list")
     characters.forEach(character => {
-        const li = document.createElement("li")
-        li.textContent = character.name
+        const li = document.createElement("li")  
+        li.innerHTML = `
+        <img src="https://ihatov08.github.io${character.image}" alt="${character.name}">
+        <p>${character.name}</p>
+        <p>${character.category}</p>
+        `
         characterList.appendChild(li)
     })
 }
