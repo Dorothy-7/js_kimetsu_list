@@ -3,6 +3,7 @@ const getCharacters = async (category) =>{
     const characters = await response.json()
 
     const characterList = document.getElementById("character-list")
+    characterList.innerHTML = ""
     characters.forEach(character => {
         const li = document.createElement("li")  
         li.innerHTML = `
@@ -13,6 +14,13 @@ const getCharacters = async (category) =>{
         characterList.appendChild(li)
     })
 }
+
+const radioButtons = document.querySelectorAll("input[name='category']")
+radioButtons.forEach(radio => {
+    radio.addEventListener("change", (e) => {
+        getCharacters(e.target.value)
+    })
+})
 
 getCharacters("all")
 // getCharacters("hashira")
